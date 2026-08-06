@@ -1,0 +1,279 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Nicolas Lermé <nicolas.lerme@gmail.com>
+ * SPDX-License-Identifier: LGPL-3.0-only
+ *
+ * PDF report theme for srm-dhcp-export.
+ * Edit the custom properties below to change the visual identity quickly.
+ */
+
+:root {
+  --font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+  --text-color: #172033;
+  --muted-color: #5f6b7a;
+  --accent-color: #1565c0;
+  --accent-dark: #0d3f78;
+  --header-text-color: #ffffff;
+  --table-header-background: #1565c0;
+  --table-header-text: #ffffff;
+  --table-border-color: #c9d3df;
+  --table-row-background: #ffffff;
+  --table-stripe-background: #eef4fa;
+  --table-hover-background: #e1edf8;
+  --metadata-background: #f4f7fb;
+  --missing-color: #7b8794;
+  --page-margin: 13mm;
+  --table-font-size: 9.2pt;
+  --table-cell-padding: 6px 8px;
+  --border-radius: 6px;
+}
+
+@page {
+  size: A4 landscape;
+  margin: var(--page-margin);
+
+  @bottom-left {
+    content: "srm-dhcp-export";
+    color: var(--muted-color);
+    font-family: var(--font-family);
+    font-size: 8pt;
+  }
+
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+    color: var(--muted-color);
+    font-family: var(--font-family);
+    font-size: 8pt;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 10pt;
+  line-height: 1.35;
+}
+
+body {
+  margin: 0;
+}
+
+.report-header {
+  align-items: flex-start;
+  border-bottom: 3px solid var(--accent-color);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.eyebrow {
+  color: var(--accent-color);
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0 0 3px;
+  text-transform: uppercase;
+}
+
+h1 {
+  color: var(--accent-dark);
+  font-size: 22pt;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.subtitle {
+  color: var(--muted-color);
+  margin: 5px 0 0;
+}
+
+.device-count {
+  background: var(--accent-color);
+  border-radius: var(--border-radius);
+  color: var(--header-text-color);
+  min-width: 88px;
+  padding: 8px 13px;
+  text-align: center;
+}
+
+.device-count strong,
+.device-count span {
+  display: block;
+}
+
+.device-count strong {
+  font-size: 19pt;
+  line-height: 1;
+}
+
+.device-count span {
+  font-size: 8pt;
+  margin-top: 3px;
+  text-transform: uppercase;
+}
+
+.metadata {
+  background: var(--metadata-background);
+  border: 1px solid var(--table-border-color);
+  border-radius: var(--border-radius);
+  display: grid;
+  grid-template-columns: 1fr 1.45fr 1fr;
+  margin-bottom: 12px;
+  padding: 8px 11px;
+}
+
+.metadata > div {
+  padding-right: 10px;
+}
+
+.metadata-label,
+.metadata-value {
+  display: block;
+}
+
+.metadata-label {
+  color: var(--muted-color);
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.metadata-value {
+  font-size: 9pt;
+  margin-top: 2px;
+  overflow-wrap: anywhere;
+}
+
+.device-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: var(--table-font-size);
+  table-layout: fixed;
+  width: 100%;
+}
+
+.device-table caption {
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 0;
+}
+
+.column-number {
+  width: 6%;
+}
+
+.column-mac {
+  width: 25%;
+}
+
+.column-ip {
+  width: 22%;
+}
+
+.column-name {
+  width: 47%;
+}
+
+.device-table thead {
+  display: table-header-group;
+}
+
+.device-table th,
+.device-table td {
+  border-bottom: 1px solid var(--table-border-color);
+  border-right: 1px solid var(--table-border-color);
+  padding: var(--table-cell-padding);
+  text-align: left;
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+}
+
+.device-table th:first-child,
+.device-table td:first-child {
+  border-left: 1px solid var(--table-border-color);
+}
+
+.device-table thead th {
+  background: var(--table-header-background);
+  border-top: 1px solid var(--table-header-background);
+  color: var(--table-header-text);
+  font-size: 8.5pt;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.device-table thead th:first-child {
+  border-top-left-radius: var(--border-radius);
+}
+
+.device-table thead th:last-child {
+  border-top-right-radius: var(--border-radius);
+}
+
+.device-table tbody tr {
+  break-inside: avoid;
+}
+
+.device-table tbody tr:nth-child(odd) td {
+  background: var(--table-row-background);
+}
+
+.device-table tbody tr:nth-child(even) td {
+  background: var(--table-stripe-background);
+}
+
+.device-table tbody tr:hover td {
+  background: var(--table-hover-background);
+}
+
+.row-number {
+  color: var(--muted-color);
+  text-align: right !important;
+}
+
+.mac-address,
+.ip-address {
+  font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+  font-size: 8.8pt;
+  white-space: nowrap;
+}
+
+.device-name {
+  font-weight: 600;
+}
+
+.missing {
+  color: var(--missing-color);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.report-footer {
+  border-top: 1px solid var(--table-border-color);
+  color: var(--muted-color);
+  display: flex;
+  font-size: 7.5pt;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 6px;
+}
+
+.confidentiality-note {
+  font-weight: 700;
+}
+
+@media screen {
+  body {
+    background: #ffffff;
+    margin: 20px auto;
+    max-width: 1100px;
+    padding: 20px;
+  }
+}

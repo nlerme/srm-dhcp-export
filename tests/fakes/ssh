@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# SPDX-FileCopyrightText: 2026 Nicolas Lermé <nicolas.lerme@gmail.com>
+# SPDX-License-Identifier: LGPL-3.0-only
+# Test double for OpenSSH. It accepts every command and never contacts a host.
+set -eu
+if [[ "$*" == *"SSH connection established"* ]]; then
+    printf 'SSH connection established.\n'
+fi
+exit 0
