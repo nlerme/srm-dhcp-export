@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-# SPDX-FileCopyrightText: 2026 Nicolas Lermé <nicolas.lerme@gmail.com>
-# SPDX-License-Identifier: LGPL-3.0-only
-# Test double for SCP. It copies the configured fixture to the destination.
-set -eu
-: "${SRM_DHCP_TEST_FIXTURE:?SRM_DHCP_TEST_FIXTURE is required}"
-destination="${!#}"
-cp "$SRM_DHCP_TEST_FIXTURE" "$destination"
