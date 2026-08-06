@@ -1,0 +1,33 @@
+# Generated reports and exports
+*.csv
+*.pdf
+*.html
+
+# Python caches and environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Build and release output
+dist/
+build/
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Local secrets and SSH material
+.env
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+known_hosts
+
+# Keep the bundled report template tracked.
+!templates/report.html
